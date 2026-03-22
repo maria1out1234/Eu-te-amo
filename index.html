@@ -1,59 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Love</title>
+    <title>Para o amor da minha vida</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #fff;
+            background: linear-gradient(to bottom, purple, black);
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
         }
         .heart {
             width: 100px;
             height: 100px;
             background: pink;
             position: relative;
-            animation: pulse 1.5s infinite;
-        }
-        .heart:before,
-        .heart:after {
-            content: '';
-            background: pink;
-            border-radius: 50%;
-            position: absolute;
-        }
-        .heart:before {
-            width: 100px;
-            height: 100px;
-            left: 50px;
-            top: 0;
-        }
-        .heart:after {
-            width: 100px;
-            height: 100px;
-            left: 0;
-            top: 50px;
+            animation: pulse 1s infinite;
         }
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="heart"></div>
+    <div class="heart" style="border-radius: 50%;"></div>
+    <h1>Oi, amor. Fiz esse presente porque senti saudades...</h1>
     <div>
-        <p>Original Message: "I love you more than words can say." </p>
-        <h2>Remaining Time:</h2>
-        <p>8 months and 26 days</p>
+        <h2>Countdown Timer</h2>
+        <div id="countdown"></div>
     </div>
-    <audio controls>
-        <source src="path/to/your/music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <button onclick="document.getElementById('hiddenContent').classList.toggle('hidden')">Reveal Hidden Content</button>
+    <div id="hiddenContent" class="hidden">
+        <h2>Spotify Music Embed</h2>
+        <iframe src="https://open.spotify.com/embed/track/YOUR_TRACK_HERE" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+    <h2>Timeline</h2>
+    <ul>
+        <li>June 2025: [Event Description]</li>
+    </ul>
+    <script>
+        const endDate = new Date('2025-06-25T00:00:00Z');
+        function updateCountdown() {
+            const now = new Date();
+            const timeLeft = endDate - now;
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            document.getElementById('countdown').innerText = `${days} dias, ${hours} horas, ${minutes} minutos, ${seconds} segundos`; 
+        }
+        setInterval(updateCountdown, 1000);
+    </script>
 </body>
 </html>
