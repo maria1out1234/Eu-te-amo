@@ -1,22 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para o amor da minha vida</title>
+    <title>Love</title>
     <style>
         body {
-            background: linear-gradient(to bottom, purple, black);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
             color: white;
-            text-align: center;
             font-family: Arial, sans-serif;
         }
         .heart {
             width: 100px;
             height: 100px;
-            background: pink;
+            background-color: pink;
             position: relative;
-            animation: pulse 1s infinite;
+            animation: pulse 1.5s infinite;
+        }
+        .heart:before, .heart:after {
+            content: '';
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart:before {
+            top: -50px;
+            left: 0;
+        }
+        .heart:after {
+            left: 50px;
+            top: 0;
         }
         @keyframes pulse {
             0%, 100% {
@@ -26,39 +47,56 @@
                 transform: scale(1.1);
             }
         }
-        .hidden {
+        .countdown {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+        .hidden-content {
             display: none;
+            margin-top: 20px;
+        }
+        .reveal-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: pink;
+            border: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="heart" style="border-radius: 50%;"></div>
-    <h1>Oi, amor. Fiz esse presente porque senti saudades...</h1>
-    <div>
-        <h2>Countdown Timer</h2>
-        <div id="countdown"></div>
-    </div>
-    <button onclick="document.getElementById('hiddenContent').classList.toggle('hidden')">Reveal Hidden Content</button>
-    <div id="hiddenContent" class="hidden">
-        <h2>Spotify Music Embed</h2>
-        <iframe src="https://open.spotify.com/embed/track/YOUR_TRACK_HERE" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    </div>
-    <h2>Timeline</h2>
-    <ul>
-        <li>June 2025: [Event Description]</li>
-    </ul>
-    <script>
-        const endDate = new Date('2025-06-25T00:00:00Z');
-        function updateCountdown() {
-            const now = new Date();
-            const timeLeft = endDate - now;
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            document.getElementById('countdown').innerText = `${days} dias, ${hours} horas, ${minutes} minutos, ${seconds} segundos`; 
-        }
-        setInterval(updateCountdown, 1000);
-    </script>
+
+<div class="heart"></div>
+<h1>We have been together for 8 months and 26 days!</h1>
+
+<div class="countdown" id="countdown-timer"></div>
+
+<button class="reveal-button" onclick="revealContent()">Reveal Hidden Content</button>
+<div class="hidden-content" id="hidden-content">
+    <p>This is some hidden content that expresses how much I love you!</p>
+</div>
+
+<iframe src="https://open.spotify.com/embed/track/YOUR_TRACK_ID" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+<script>
+    const countdownDate = new Date("2025-06-25T00:00:00Z");
+    const updateCountdown = () => {
+        const now = new Date().getTime();
+        const distance = now - countdownDate.getTime();
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown-timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateCountdown, 1000);
+
+    function revealContent() {
+        document.getElementById("hidden-content").style.display = "block";
+    }
+</script>
+
 </body>
 </html>
