@@ -1,193 +1,175 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Para o Amor da Minha Vida</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para o amor da minha vida</title>
 
 <style>
 body {
-    margin: 0;
-    font-family: Arial;
-    background: linear-gradient(to bottom, #ffe6f0, #fff);
-    text-align: center;
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(180deg, #1a001f, #3d003f);
+  color: white;
+  text-align: center;
 }
 
-/* coração */
 .heart {
-    font-size: 90px;
-    color: #ff4d6d;
-    animation: pulse 1.2s infinite;
-    margin-top: 40px;
+  font-size: 60px;
+  animation: pulse 1s infinite;
+  margin-top: 40px;
 }
 
 @keyframes pulse {
-    0% {transform: scale(1);}
-    50% {transform: scale(1.3);}
-    100% {transform: scale(1);}
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
-/* animação */
-.hidden {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 1s;
-}
-.show {
-    opacity: 1;
-    transform: translateY(0);
+h1 {
+  font-size: 28px;
+  margin: 10px;
 }
 
-/* caixas */
+.small {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
 .box {
-    border: 2px solid #ff99aa;
-    border-radius: 20px;
-    padding: 15px;
-    margin: 10px auto;
-    width: 85%;
+  display: inline-block;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.1);
 }
 
-.mini-box {
-    display: inline-block;
-    border: 2px solid #ff99aa;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 10px;
+.round {
+  border-radius: 30px;
 }
 
-/* botão */
 button {
-    background: #ff4d6d;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 10px;
+  background: pink;
+  border: none;
+  padding: 15px;
+  border-radius: 20px;
+  margin: 20px;
+  cursor: pointer;
 }
 
-/* galeria */
-.gallery img {
-    width: 90px;
-    height: 90px;
-    border-radius: 12px;
-    margin: 5px;
-    object-fit: cover;
+.hidden {
+  display: none;
 }
 
-/* timeline */
-.timeline {
-    width: 85%;
-    margin: auto;
-    text-align: left;
+timeline {
+  border-left: 2px solid pink;
+  margin: 20px;
+  padding-left: 20px;
+  text-align: left;
 }
 
-.timeline-item {
-    border-left: 3px solid pink;
-    padding-left: 10px;
-    margin: 20px 0;
-    position: relative;
-}
-
-.timeline-item::before {
-    content: "❤️";
-    position: absolute;
-    left: -15px;
+timeline div {
+  margin-bottom: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="heart">❤️</div>
+<div class="heart">💗</div>
 
 <h1>Para o amor da minha vida</h1>
-<p style="font-size:14px;">Juntos desde 25 de junho de 2025</p>
+<p class="small">Juntos desde 25 de junho de 2025</p>
 
-<div class="mini-box">há 8 meses</div>
-<div class="mini-box">e 24 dias</div>
+<div>
+  <div class="box">
+    <h2 id="meses">0</h2>
+    <p>meses</p>
+  </div>
+  <div class="box">
+    <h2 id="dias">0</h2>
+    <p>dias</p>
+  </div>
+</div>
 
-<div class="box" id="contador"></div>
+<div class="box round">
+  <h2 id="contador">00:00:00</h2>
+</div>
 
-<button onclick="mostrarTudo()">Clique para revelar 💗</button>
+<p id="totalDias">...</p>
+
+<button onclick="revelar()">💖 Clique para revelar 💖</button>
 
 <div id="conteudo" class="hidden">
 
-<h2>Nossa música</h2>
+  <h2>Nossa música</h2>
+  <div class="box round">
+    <p>Trilha sonora do nosso amor</p>
+    <button onclick="tocarMusica()">▶️ Clique para descobrir</button>
+  </div>
 
-<div class="box">Trilha sonora do nosso amor</div>
+  <iframe id="spotify" class="hidden" style="border-radius:12px" 
+  src="" width="300" height="80" frameBorder="0"></iframe>
 
-<button onclick="mostrarMusica()">Revelar música 🎵</button>
-
-<div id="musica" class="hidden">
-<iframe style="border-radius:12px"
-src="https://open.spotify.com/embed/track/5wG7UpUik9lpxUWjQFadPo"
-width="90%" height="80"></iframe>
-</div>
-
-<div class="box">
-Oi, amor. Fiz esse presente porque senti saudades e porque você merece tudo. Desde o dia em que te vi, eu gostei muito de você, e hoje você se tornou tudo pra mim. Obrigada por sempre ser um namorado tão bom e por fazer tanto por mim. Obrigada por ser paciente comigo eu estou me esforçando para ser cada vez melhor.
-<br><br>
-Você é a pessoa que deixou minha vida muito mais feliz. Obrigada por sempre estar comigo; você me faz sentir muito segura quando estou ao seu lado.
-<br><br>
+  <div class="box" style="margin:20px">
+    <p>
+Oi, amor. Fiz esse presente porque senti saudades e porque você merece tudo.
+Desde o dia em que te vi, eu gostei muito de você, e hoje você se tornou tudo pra mim.
+Obrigada por sempre ser um namorado tão bom e por fazer tanto por mim.
+Obrigada por ser paciente comigo eu estou me esforçando para ser cada vez melhor.
+Você é a pessoa que deixou minha vida muito mais feliz.
+Obrigada por sempre estar comigo; você me faz sentir muito segura quando estou ao seu lado.
 Eu amo muito você! 🩷
-</div>
+    </p>
+  </div>
 
-<h2>Nossos momentos</h2>
+  <h2>Nossos momentos</h2>
+  <p>(coloque suas 10 fotos aqui depois)</p>
 
-<div class="gallery">
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
-<img src="foto4.jpg">
-<img src="foto5.jpg">
-<img src="foto6.jpg">
-<img src="foto7.jpg">
-<img src="foto8.jpg">
-<img src="foto9.jpg">
-<img src="foto10.jpg">
-</div>
+  <h2>Nossa história</h2>
 
-<h2>Nossa história</h2>
-
-<div class="timeline">
-<div class="timeline-item">Como nos conhecemos...</div>
-<div class="timeline-item">Nosso primeiro encontro...</div>
-<div class="timeline-item">Momentos especiais...</div>
-<div class="timeline-item">E tudo que ainda vamos viver 💗</div>
-</div>
+  <div class="timeline">
+    <div>💗 Primeira foto</div>
+    <div>💗 Pedido de namoro</div>
+    <div>💗 Momentos especiais</div>
+  </div>
 
 </div>
 
 <script>
-// DATA DE INÍCIO
-let inicio = new Date("2025-06-25T00:00:00");
 
-function atualizarContador() {
-    let agora = new Date();
-    let diff = agora - inicio;
+const inicio = new Date("2025-06-25");
 
-    let dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-    let horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    let minutos = Math.floor((diff / (1000 * 60)) % 60);
-    let segundos = Math.floor((diff / 1000) % 60);
+function atualizar() {
+  const agora = new Date();
+  const diff = agora - inicio;
 
-    document.getElementById("contador").innerHTML =
-        `💗 ${dias} dias juntos<br>⏰ ${horas}h ${minutos}m ${segundos}s`;
+  const dias = Math.floor(diff / (1000*60*60*24));
+  const meses = Math.floor(dias / 30);
+
+  document.getElementById("dias").innerText = dias % 30;
+  document.getElementById("meses").innerText = meses;
+  document.getElementById("totalDias").innerText = "São " + dias + " dias juntos 💖";
+
+  const horas = agora.getHours().toString().padStart(2,'0');
+  const minutos = agora.getMinutes().toString().padStart(2,'0');
+  const segundos = agora.getSeconds().toString().padStart(2,'0');
+
+  document.getElementById("contador").innerText = horas + ":" + minutos + ":" + segundos;
 }
 
-setInterval(atualizarContador, 1000);
-atualizarContador();
+setInterval(atualizar, 1000);
 
-// revelar tudo
-function mostrarTudo() {
-    document.getElementById("conteudo").classList.add("show");
+function revelar(){
+  document.getElementById("conteudo").classList.remove("hidden");
 }
 
-// revelar música
-function mostrarMusica() {
-    document.getElementById("musica").classList.add("show");
+function tocarMusica(){
+  const iframe = document.getElementById("spotify");
+  iframe.src = "https://open.spotify.com/embed/track/5wG7UpUik9lpxUWjQFadPo";
+  iframe.classList.remove("hidden");
 }
+
 </script>
 
 </body>
