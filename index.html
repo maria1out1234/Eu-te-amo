@@ -1,176 +1,59 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para o amor da minha vida</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: linear-gradient(180deg, #1a001f, #3d003f);
-  color: white;
-  text-align: center;
-}
-
-.heart {
-  font-size: 60px;
-  animation: pulse 1s infinite;
-  margin-top: 40px;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-h1 {
-  font-size: 28px;
-  margin: 10px;
-}
-
-.small {
-  font-size: 14px;
-  opacity: 0.7;
-}
-
-.box {
-  display: inline-block;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.1);
-}
-
-.round {
-  border-radius: 30px;
-}
-
-button {
-  background: pink;
-  border: none;
-  padding: 15px;
-  border-radius: 20px;
-  margin: 20px;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-
-timeline {
-  border-left: 2px solid pink;
-  margin: 20px;
-  padding-left: 20px;
-  text-align: left;
-}
-
-timeline div {
-  margin-bottom: 20px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+        }
+        .heart {
+            width: 100px;
+            height: 100px;
+            background: pink;
+            position: relative;
+            animation: pulse 1.5s infinite;
+        }
+        .heart:before,
+        .heart:after {
+            content: '';
+            background: pink;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart:before {
+            width: 100px;
+            height: 100px;
+            left: 50px;
+            top: 0;
+        }
+        .heart:after {
+            width: 100px;
+            height: 100px;
+            left: 0;
+            top: 50px;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
 </head>
-
 <body>
-
-<div class="heart">💗</div>
-
-<h1>Para o amor da minha vida</h1>
-<p class="small">Juntos desde 25 de junho de 2025</p>
-
-<div>
-  <div class="box">
-    <h2 id="meses">0</h2>
-    <p>meses</p>
-  </div>
-  <div class="box">
-    <h2 id="dias">0</h2>
-    <p>dias</p>
-  </div>
-</div>
-
-<div class="box round">
-  <h2 id="contador">00:00:00</h2>
-</div>
-
-<p id="totalDias">...</p>
-
-<button onclick="revelar()">💖 Clique para revelar 💖</button>
-
-<div id="conteudo" class="hidden">
-
-  <h2>Nossa música</h2>
-  <div class="box round">
-    <p>Trilha sonora do nosso amor</p>
-    <button onclick="tocarMusica()">▶️ Clique para descobrir</button>
-  </div>
-
-  <iframe id="spotify" class="hidden" style="border-radius:12px" 
-  src="" width="300" height="80" frameBorder="0"></iframe>
-
-  <div class="box" style="margin:20px">
-    <p>
-Oi, amor. Fiz esse presente porque senti saudades e porque você merece tudo.
-Desde o dia em que te vi, eu gostei muito de você, e hoje você se tornou tudo pra mim.
-Obrigada por sempre ser um namorado tão bom e por fazer tanto por mim.
-Obrigada por ser paciente comigo eu estou me esforçando para ser cada vez melhor.
-Você é a pessoa que deixou minha vida muito mais feliz.
-Obrigada por sempre estar comigo; você me faz sentir muito segura quando estou ao seu lado.
-Eu amo muito você! 🩷
-    </p>
-  </div>
-
-  <h2>Nossos momentos</h2>
-  <p>(coloque suas 10 fotos aqui depois)</p>
-
-  <h2>Nossa história</h2>
-
-  <div class="timeline">
-    <div>💗 Primeira foto</div>
-    <div>💗 Pedido de namoro</div>
-    <div>💗 Momentos especiais</div>
-  </div>
-
-</div>
-
-<script>
-
-const inicio = new Date("2025-06-25");
-
-function atualizar() {
-  const agora = new Date();
-  const diff = agora - inicio;
-
-  const dias = Math.floor(diff / (1000*60*60*24));
-  const meses = Math.floor(dias / 30);
-
-  document.getElementById("dias").innerText = dias % 30;
-  document.getElementById("meses").innerText = meses;
-  document.getElementById("totalDias").innerText = "São " + dias + " dias juntos 💖";
-
-  const horas = agora.getHours().toString().padStart(2,'0');
-  const minutos = agora.getMinutes().toString().padStart(2,'0');
-  const segundos = agora.getSeconds().toString().padStart(2,'0');
-
-  document.getElementById("contador").innerText = horas + ":" + minutos + ":" + segundos;
-}
-
-setInterval(atualizar, 1000);
-
-function revelar(){
-  document.getElementById("conteudo").classList.remove("hidden");
-}
-
-function tocarMusica(){
-  const iframe = document.getElementById("spotify");
-  iframe.src = "https://open.spotify.com/embed/track/5wG7UpUik9lpxUWjQFadPo";
-  iframe.classList.remove("hidden");
-}
-
-</script>
-
+    <div class="heart"></div>
+    <div>
+        <p>Original Message: "I love you more than words can say." </p>
+        <h2>Remaining Time:</h2>
+        <p>8 months and 26 days</p>
+    </div>
+    <audio controls>
+        <source src="path/to/your/music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </body>
 </html>
