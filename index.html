@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love</title>
+    <title>Para o amor da minha vida 💖</title>
     <style>
         body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            background-color: #0b0b0b;
             color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
             font-family: Arial, sans-serif;
         }
         .heart {
             width: 100px;
             height: 100px;
-            background-color: pink;
+            background: red;
             position: relative;
             animation: pulse 1.5s infinite;
         }
@@ -27,7 +26,7 @@
             content: '';
             width: 100px;
             height: 100px;
-            background-color: pink;
+            background: red;
             border-radius: 50%;
             position: absolute;
         }
@@ -40,63 +39,21 @@
             top: 0;
         }
         @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
-        .countdown {
-            font-size: 2em;
-            margin-top: 20px;
-        }
-        .hidden-content {
-            display: none;
-            margin-top: 20px;
-        }
-        .reveal-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: pink;
-            border: none;
-            cursor: pointer;
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
-
-<div class="heart"></div>
-<h1>We have been together for 8 months and 26 days!</h1>
-
-<div class="countdown" id="countdown-timer"></div>
-
-<button class="reveal-button" onclick="revealContent()">Reveal Hidden Content</button>
-<div class="hidden-content" id="hidden-content">
-    <p>This is some hidden content that expresses how much I love you!</p>
-</div>
-
-<iframe src="https://open.spotify.com/embed/track/YOUR_TRACK_ID" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-
-<script>
-    const countdownDate = new Date("2025-06-25T00:00:00Z");
-    const updateCountdown = () => {
-        const now = new Date().getTime();
-        const distance = now - countdownDate.getTime();
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("countdown-timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-    setInterval(updateCountdown, 1000);
-
-    function revealContent() {
-        document.getElementById("hidden-content").style.display = "block";
-    }
-</script>
-
+    <h1>Para o amor da minha vida 💖</h1>
+    <div class="heart"></div>
+    <p>Juntos desde 25 de junho de 2025</p>
+    <div>
+        <div>Há 8 meses</div>
+        <div>E 24 dias</div>
+        <div>São 269 dias juntos 💕</div>
+        <div>Nossa música 🎶</div>
+    </div>
 </body>
 </html>
