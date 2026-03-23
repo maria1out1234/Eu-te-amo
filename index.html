@@ -1,59 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para o amor da minha vida 💖</title>
-    <style>
-        body {
-            background-color: #0b0b0b;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-        }
-        .heart {
-            width: 100px;
-            height: 100px;
-            background: red;
-            position: relative;
-            animation: pulse 1.5s infinite;
-        }
-        .heart:before, .heart:after {
-            content: '';
-            width: 100px;
-            height: 100px;
-            background: red;
-            border-radius: 50%;
-            position: absolute;
-        }
-        .heart:before {
-            top: -50px;
-            left: 0;
-        }
-        .heart:after {
-            left: 50px;
-            top: 0;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Para o amor da minha vida</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0b0b0b;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    /* Coração pulsando */
+    .heart {
+      width: 100px;
+      height: 100px;
+      background: red;
+      position: relative;
+      margin: 0 auto;
+      transform: rotate(-45deg);
+      animation: pulse 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 100px;
+      height: 100px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 50px;
+      top: 0;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1) rotate(-45deg); }
+      50% { transform: scale(1.2) rotate(-45deg); }
+      100% { transform: scale(1) rotate(-45deg); }
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    .box {
+      border: 2px solid white;
+      border-radius: 15px;
+      padding: 15px;
+      margin: 10px auto;
+      width: 200px;
+    }
+
+    .small {
+      font-size: 14px;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Para o amor da minha vida 💖</h1>
+  <div class="container">
+    
     <div class="heart"></div>
-    <p>Juntos desde 25 de junho de 2025</p>
-    <div>
-        <div>Há 8 meses</div>
-        <div>E 24 dias</div>
-        <div>São 269 dias juntos 💕</div>
-        <div>Nossa música 🎶</div>
-    </div>
+
+    <h1>Para o amor da minha vida 💖</h1>
+
+    <p class="small">Juntos desde 25 de junho de 2025</p>
+
+    <div class="box">Há 8 meses</div>
+    <div class="box">E 24 dias</div>
+
+    <div class="box">São 269 dias juntos 💕</div>
+
+    <div class="box">Nossa música 🎶</div>
+
+  </div>
 </body>
 </html>
